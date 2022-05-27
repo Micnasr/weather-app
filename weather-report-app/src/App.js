@@ -49,7 +49,14 @@ function App() {
       morningOrEvening= ' PM'
     }
 
-    return countryTime +':' + (new Date().getUTCMinutes()) + morningOrEvening;
+    let countryMinute = new Date().getUTCMinutes();
+
+    //add a zero for numbers under 10 (purely aesthetic)
+    if (countryMinute < 10){
+      countryMinute = "0" + countryMinute.toString();
+    }
+
+    return countryTime +':' + (countryMinute) + morningOrEvening;
   }
 
   //concatenate string to get city and country (when inputted)
@@ -97,7 +104,7 @@ function App() {
       type="text" 
       onKeyPress={searchLocation} />
     </div>
-    {error && <p className='error'>Country Not Found (Check for spelling)</p>}
+    {error && <p className='error'>City Not Found (Check for spelling)</p>}
 
     {/*only print if there is no errors*/}
     {!error &&
