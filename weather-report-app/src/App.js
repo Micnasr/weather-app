@@ -14,6 +14,9 @@ function App() {
   //keep track of errors like invalid country name
   const [error, setError] = useState(false);
 
+  //change weather background
+  const [weather, setWeather] = useState('app');
+
   //API url
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}${","+code}&units=metric&appid=8cd69c2fe166b54daba42f23ce229254`;
 
@@ -25,6 +28,13 @@ function App() {
       axios.get(url).then((response) => {
         setError(false);
         setData(response.data);
+
+        //check if its raining or mist (then change weather)
+        if ((response.data.weather && response.data.weather[0].main === 'Rain') || (response.data.weather && response.data.weather[0].main === 'Mist')){
+          setWeather('rain');
+        } else if (response.data.weather) {
+          setWeather('app');
+        }
       }).catch(error => {
         setError(true);
       })
@@ -105,9 +115,8 @@ function App() {
       });
   }
   
-
   return (
-  <div className="app">
+  <div className={`${weather}`}>
     <div className="search">
       <input 
       onChange={getInfo}
