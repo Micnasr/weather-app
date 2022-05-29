@@ -37,18 +37,29 @@ function App() {
 
   //calculate country's time
   const getTime = () => {
-    let countryTime = (new Date().getUTCHours()+(data.timezone/3600));
+    let gmtTime = new Date().getUTCHours();
+
+    let countryTime = (gmtTime+(data.timezone/3600));
+
+    //if negative bring it back to 24h
+    if (countryTime < 0){
+      countryTime = 24 + countryTime
+    }
+
     let morningOrEvening = ' AM';
     
+    //if higher than 24 we want to reset to 0
     if (countryTime > 24){
       countryTime = countryTime - 24;
     }
     
+    //when its in normal time, if its larger than 12 we want to reset it and make it the afternoon
     if (countryTime > 12){
       countryTime = countryTime - 12;
       morningOrEvening= ' PM'
     }
 
+    //get minute string from the gmt time
     let countryMinute = new Date().getUTCMinutes();
 
     //add a zero for numbers under 10 (purely aesthetic)
