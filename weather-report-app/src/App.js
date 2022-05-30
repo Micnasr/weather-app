@@ -46,6 +46,8 @@ function App() {
   }
 
   useEffect(()=>{
+
+    //ask user for their location
     navigator.geolocation.getCurrentPosition(function(position) {
       
       const latitude = position.coords.latitude;
@@ -53,6 +55,7 @@ function App() {
 
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=8cd69c2fe166b54daba42f23ce229254`;
 
+      //fetch weather about user location
       axios.get(url).then((response) => {
         setData(response.data);
 
