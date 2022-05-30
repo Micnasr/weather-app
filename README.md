@@ -1,13 +1,13 @@
-# Weather Application
+# Weather Application 🌧️
 
 ## Get the weather data and local time of any country in the world!
 
 ![image](https://user-images.githubusercontent.com/44876651/171034181-5fed2b12-48e3-4578-8375-221b08962fe0.png)
 
-## You can filter cities also by the country name or code
+## You can filter cities also by the country name or code 🌤️
 ![image](https://user-images.githubusercontent.com/44876651/171034314-7153f409-cda7-42fc-b4bf-02eaca624fd4.png)
 
-## With a dynamic background that changes depending on the weather
+## With a dynamic background that changes depending on the weather ⚡
 
 ![image](https://user-images.githubusercontent.com/44876651/171034758-b966762d-3fe3-4f09-8f1f-b6f1cce1d92d.png)
 
