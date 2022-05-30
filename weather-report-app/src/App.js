@@ -185,7 +185,7 @@ function App() {
           </div>
           <div className="humidity">
             {data.main ? <p className="bold">{getTime()}</p> : null}
-            <p>Time</p>
+            <p>Local Time</p>
           </div>
           <div className="wind">
             {data.main ? <p className="bold">{Math.round(data.wind.speed)} km/h</p> : null}
