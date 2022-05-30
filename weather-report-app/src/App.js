@@ -115,10 +115,10 @@ function App() {
 
   //concatenate string to get city and country (when inputted)
   const getInfo = (event) => {
-    const info = event.target.value.split(" ");
-    setLocation(info[0]);
+    const info = event.target.value.split("-");
+    setLocation(info[0].trim());
     if (info[1] != null){
-      getData(info[1]);
+      getData(info[1]).trim();
     }
   }
 
@@ -153,7 +153,7 @@ function App() {
     <div className="search">
       <input 
       onChange={getInfo}
-      placeholder='Enter City Name' 
+      placeholder='Enter City-Country' 
       type="text" 
       onKeyPress={searchLocation} />
     </div>
