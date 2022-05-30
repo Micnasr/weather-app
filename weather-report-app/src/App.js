@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
 
@@ -44,6 +44,28 @@ function App() {
       setCode('');
     }
   }
+
+  useEffect(()=>{
+    navigator.geolocation.getCurrentPosition(function(position) {
+      
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=8cd69c2fe166b54daba42f23ce229254`;
+
+      axios.get(url).then((response) => {
+        setData(response.data);
+
+        //check if its raining or mist (then change weather)
+        if ((response.data.weather && response.data.weather[0].main === 'Rain') || (response.data.weather && response.data.weather[0].main === 'Mist')){
+          setWeather('rain');
+        } else if (response.data.weather) {
+          setWeather('app');
+        }
+      })
+
+    });
+  }, [])
 
   //calculate country's time
   const getTime = () => {
