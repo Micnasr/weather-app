@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+.centered {
+  text-align: center;
+}
+
 p {
   font-size: 1.6rem;
 }
@@ -21,6 +25,14 @@ h1 {
 }
 
 .rain {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-color: rgba(0,0,0,0.4);
+  color: #fff;
+}
+
+.cloudy {
   width: 100%;
   height: 100vh;
   position: relative;
@@ -50,12 +62,28 @@ h1 {
   z-index: -1;
 }
 
+.cloudy:before {
+  content: '';
+  background: url('./assets/clouds.jpg') no-repeat center/cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .app .search {
   text-align: center;
   padding: 1rem;
 }
 
 .rain .search {
+  text-align: center;
+  padding: 1rem;
+}
+
+.cloudy .search {
   text-align: center;
   padding: 1rem;
 }
@@ -78,6 +106,14 @@ h1 {
   color: #f8f8f8;
 }
 
+.cloudy input {
+  padding: 0.7rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8f8f8;
+}
 
 ::placeholder {
   color: #f8f8f8;
@@ -105,6 +141,11 @@ h1 {
   margin: 1rem auto;
 }
 
+.cloudy .top {
+  width: 100%;
+  margin: 1rem auto;
+}
+
 .app .description {
   position: relative;
   right: -90%;
@@ -113,6 +154,13 @@ h1 {
 }
 
 .rain .description {
+  position: relative;
+  right: -90%;
+  transform-origin: 0 0;
+  transform: rotate(269deg);
+}
+
+.cloudy .description {
   position: relative;
   right: -90%;
   transform-origin: 0 0;
@@ -131,6 +179,17 @@ h1 {
 }
 
 .rain .bottom {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255,255,255,0.2);
+}
+
+.cloudy .bottom {
   display: flex;
   justify-content: space-evenly;
   text-align: center;

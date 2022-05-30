@@ -15,7 +15,7 @@ function App() {
   const [error, setError] = useState(false);
 
   //change weather background
-  const [weather, setWeather] = useState('app');
+  const [weather, setWeather] = useState('cloudy');
 
   //API url
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}${","+code}&units=metric&appid=8cd69c2fe166b54daba42f23ce229254`;
@@ -32,9 +32,12 @@ function App() {
         //check if its raining or mist (then change weather)
         if ((response.data.weather && response.data.weather[0].main === 'Rain') || (response.data.weather && response.data.weather[0].main === 'Mist')){
           setWeather('rain');
+        } else if (response.data.weather && response.data.weather[0].main === 'Clouds') {
+          setWeather('cloudy');
         } else if (response.data.weather) {
           setWeather('app');
         }
+        
       }).catch(error => {
         setError(true);
       })
@@ -62,6 +65,8 @@ function App() {
         //check if its raining or mist (then change weather)
         if ((response.data.weather && response.data.weather[0].main === 'Rain') || (response.data.weather && response.data.weather[0].main === 'Mist')){
           setWeather('rain');
+        } else if (response.data.weather && response.data.weather[0].main === 'Clouds') {
+          setWeather('cloudy');
         } else if (response.data.weather) {
           setWeather('app');
         }
@@ -167,25 +172,29 @@ function App() {
       </div>
       
       {/*only print if a location is chosen*/}
-      {data.name !== undefined && 
-      <div className="bottom">
-        <div className="feels">
-          {data.main ? <p className="bold">{Math.round(data.main.feels_like)}°C</p> : null}
-          <p>Feels Like</p>
-        </div>
-        <div className="humidity">
-          {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
-          <p>Humidity</p>
-        </div>
-        <div className="humidity">
-          {data.main ? <p className="bold">{getTime()}</p> : null}
-          <p>Time</p>
-        </div>
-        <div className="wind">
-          {data.main ? <p className="bold">{Math.round(data.wind.speed)} km/h</p> : null}
-          <p>Wind Speed</p>
-        </div>
-      </div>}
+      <>
+        {data.name !== undefined && 
+        <div className="bottom">
+          <div className="feels">
+            {data.main ? <p className="bold">{Math.round(data.main.feels_like)}°C</p> : null}
+            <p>Feels Like</p>
+          </div>
+          <div className="humidity">
+            {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
+            <p>Humidity</p>
+          </div>
+          <div className="humidity">
+            {data.main ? <p className="bold">{getTime()}</p> : null}
+            <p>Time</p>
+          </div>
+          <div className="wind">
+            {data.main ? <p className="bold">{Math.round(data.wind.speed)} km/h</p> : null}
+            <p>Wind Speed</p>
+          </div>
+          
+        </div>}
+        <div className='centered'>Made by Michael Nasr</div>
+      </>
     </div>
     }
   </div>
