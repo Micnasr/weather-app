@@ -50,6 +50,9 @@ function App() {
 
   useEffect(()=>{
 
+    //changes the tab name of the website :)
+    document.title = 'Weather Application';
+
     //ask user for their location
     navigator.geolocation.getCurrentPosition(function(position) {
       
