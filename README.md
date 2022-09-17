@@ -13,6 +13,6 @@
 
 ![image](https://user-images.githubusercontent.com/44876651/171035022-df3ed3db-137f-4d42-8813-b04dde8eee7a.png)
 
-### If you choose to allow location, you will see your current city's weather information.
+### If you choose to allow location at the beginning, you will see your current city's weather information.
 
-Created by Michael Nasr using ReactJS
+Created by Michael Nasr using ReactJS and OpenWeatherMap API.
